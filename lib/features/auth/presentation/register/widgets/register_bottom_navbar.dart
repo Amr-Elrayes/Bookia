@@ -5,9 +5,7 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class registerBottomNavbar extends StatelessWidget {
-  const registerBottomNavbar({
-    super.key,
-  });
+  const registerBottomNavbar({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,4 +6,5 @@ class AppImages {
   static const String welcome = "assets/images/welcome.png";
   static const String books = "assets/images/books.png";
   static const String bookitem = "assets/images/bookitem.png";
+  static const String detailsbook = "assets/images/detailsbook.png";
 }

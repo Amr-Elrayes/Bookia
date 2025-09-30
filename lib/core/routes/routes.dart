@@ -1,8 +1,12 @@
-import 'package:bookia/features/auth/login/pages/login_screen.dart';
-import 'package:bookia/features/auth/register/pages/register_screen.dart';
+import 'package:bookia/features/auth/cubit/auth_cubit.dart';
+import 'package:bookia/features/auth/presentation/login/pages/login_screen.dart';
+import 'package:bookia/features/auth/presentation/register/pages/register_screen.dart';
+import 'package:bookia/features/datails/details_screen.dart';
 import 'package:bookia/features/main/main_app_screen.dart';
 import 'package:bookia/features/splash/splash_screen.dart';
 import 'package:bookia/features/welcome/welcome_screen.dart';
+import 'package:bookia/models/book_card_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class Routes {
@@ -11,14 +15,36 @@ class Routes {
   static String login = "/login";
   static String register = "/register";
   static String main = "/main";
+  static String details = "/details";
 
   static GoRouter routes = GoRouter(
     routes: [
       GoRoute(path: splah, builder: (context, state) => SplashScreen()),
       GoRoute(path: welcome, builder: (context, state) => WelcomeScreen()),
-      GoRoute(path: login, builder: (context, state) => LoginScreen()),
-      GoRoute(path: register, builder: (context, state) => RegisterScreen()),
+      GoRoute(
+        path: login,
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(),
+          child: LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        path: register,
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(),
+          child: RegisterScreen(),
+        ),
+      ),
       GoRoute(path: main, builder: (context, state) => MainAppScreen()),
+      GoRoute(
+        path: details,
+        name: "details",
+        builder: (context, state) {
+          final book = state.extra as BookCardModel;
+          ;
+          return DetailsScreen(book: book);
+        },
+      ),
     ],
   );
 }

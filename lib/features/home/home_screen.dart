@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: false,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20),
+            padding: const EdgeInsets.only(right: 15),
             child: SvgPicture.asset(AppIcons.searchSvg),
           ),
         ],

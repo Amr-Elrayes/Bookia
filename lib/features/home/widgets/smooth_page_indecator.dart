@@ -5,10 +5,8 @@ import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class smoothPageIndecator extends StatelessWidget {
-  const smoothPageIndecator({
-    super.key,
-    required PageController controller,
-  }) : _controller = controller;
+  const smoothPageIndecator({super.key, required PageController controller})
+    : _controller = controller;
 
   final PageController _controller;
 
@@ -28,10 +26,7 @@ class smoothPageIndecator extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(10),
-                  child: Image.asset(
-                    AppImages.books,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(AppImages.books, fit: BoxFit.cover),
                 ),
               ),
               Container(
@@ -41,10 +36,7 @@ class smoothPageIndecator extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(10),
-                  child: Image.asset(
-                    AppImages.books,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(AppImages.books, fit: BoxFit.cover),
                 ),
               ),
               Container(
@@ -54,10 +46,7 @@ class smoothPageIndecator extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(10),
-                  child: Image.asset(
-                    AppImages.books,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(AppImages.books, fit: BoxFit.cover),
                 ),
               ),
             ],

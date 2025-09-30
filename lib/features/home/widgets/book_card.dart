@@ -3,6 +3,7 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/models/book_card_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class BookCard extends StatelessWidget {
   const BookCard({super.key, required this.book});
@@ -10,7 +11,9 @@ class BookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushNamed('details', extra: book);
+      },
       child: Container(
         width: 162,
         padding: EdgeInsets.all(11),

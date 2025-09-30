@@ -5,9 +5,7 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class loginBottomNavbar extends StatelessWidget {
-  const loginBottomNavbar({
-    super.key,
-  });
+  const loginBottomNavbar({super.key});
 
   @override
   Widget build(BuildContext context) {

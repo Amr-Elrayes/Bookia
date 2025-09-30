@@ -6,14 +6,13 @@ pushTo(BuildContext context, String route) {
 }
 
 pushReplacment(BuildContext context, String route) {
-context.pushReplacement(route);
+  context.pushReplacement(route);
 }
 
 pushAndRemoveUntil(BuildContext context, String route) {
-context.go(route);
+  context.go(route);
 }
 
-pop(BuildContext context)
-{
+pop(BuildContext context) {
   context.pop();
 }
