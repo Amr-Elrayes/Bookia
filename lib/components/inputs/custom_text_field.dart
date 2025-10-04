@@ -12,6 +12,8 @@ class customTextformfield extends StatelessWidget {
     this.icon,
     this.ontap,
     this.readonly = false,
+    this.textAlign = TextAlign.start,
+    this.keyboardType = TextInputType.text
   });
   final String? hintText;
   final String? Function(String?)? validator;
@@ -20,9 +22,13 @@ class customTextformfield extends StatelessWidget {
   final Widget? icon;
   Function()? ontap;
   bool readonly;
+  TextAlign textAlign;
+  TextInputType keyboardType;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
+      textAlign: textAlign,
       readOnly: readonly,
       onTap: ontap,
       maxLines: maxlines,

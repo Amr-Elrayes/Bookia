@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bookia/components/buttons/custom_buttom.dart';
 import 'package:bookia/components/inputs/custom_text_field.dart';
+import 'package:bookia/components/inputs/password_text_field.dart';
 import 'package:bookia/core/constants/app_icons.dart';
 import 'package:bookia/core/functions/showdialog.dart';
 import 'package:bookia/core/functions/snackbar.dart';
@@ -85,26 +86,46 @@ class RegisterScreen extends StatelessWidget {
                 },
               ),
               Gap(15),
-              customTextformfield(
+              PasswordTextField(
                 controller: cubit.passwordController,
-                hintText: "password",
+                hintText: "Enter your password",
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Password is Required";
                   }
                   return null;
                 },
+                icon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset(AppIcons.eyeSvg),
+                    ),
+                  ],
+                ),
               ),
               Gap(15),
-              customTextformfield(
+              PasswordTextField(
                 controller: cubit.confirmpasswordController,
-                hintText: "Confirm password",
+                hintText: "Confirm Password",
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Confirm Password is Required";
                   }
                   return null;
                 },
+                icon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SvgPicture.asset(AppIcons.eyeSvg),
+                    ),
+                  ],
+                ),
               ),
               Gap(30),
               customButtom(

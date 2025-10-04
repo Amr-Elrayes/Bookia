@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bookia/components/buttons/custom_buttom.dart';
 import 'package:bookia/components/buttons/social_buttom.dart';
 import 'package:bookia/components/inputs/custom_text_field.dart';
+import 'package:bookia/components/inputs/password_text_field.dart';
 import 'package:bookia/core/constants/app_icons.dart';
 import 'package:bookia/core/constants/app_images.dart';
 import 'package:bookia/core/functions/showdialog.dart';
@@ -36,7 +37,7 @@ class LoginScreen extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: _buildloginbody(context),
+      body: SingleChildScrollView(child: _buildloginbody(context)),
     );
   }
 
@@ -68,21 +69,30 @@ class LoginScreen extends StatelessWidget {
               customTextformfield(
                 controller: cubit.emailController,
                 hintText: "Enter your email",
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Email is Required";
+                  }
+                  return null;
+                },
               ),
               Gap(15),
-              customTextformfield(
+              PasswordTextField(
                 controller: cubit.passwordController,
                 hintText: "Enter your password",
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Password is Required";
+                  }
+                  return null;
+                },
                 icon: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: SvgPicture.asset(AppIcons.eyeSvg),
-                      ),
+                      child: SvgPicture.asset(AppIcons.eyeSvg),
                     ),
                   ],
                 ),
@@ -90,17 +100,21 @@ class LoginScreen extends StatelessWidget {
               Gap(15),
               Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyles.size15(color: AppColors.darkGrayColor),
+                child: TextButton(
+                  onPressed: () {
+                    pushTo(context, Routes.forget_password);
+                  },
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyles.size15(color: AppColors.darkGrayColor),
+                  ),
                 ),
               ),
               Gap(30),
               customButtom(
                 txt: "Login",
                 onPressed: () {
-                  if(cubit.formkey.currentState!.validate())
-                  {
+                  if (cubit.formkey.currentState!.validate()) {
                     cubit.login();
                   }
                 },

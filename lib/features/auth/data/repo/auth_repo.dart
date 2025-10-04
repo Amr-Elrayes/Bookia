@@ -45,4 +45,42 @@ class AuthRepo {
       return null;
     }
   }
+  static Future<AuthResponse?> forget_password(AuthParams params) async {
+    try {
+      var res = await DioProvider.post(
+        endPoint: DioEndpoints.forget_password,
+        data: params.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        var body = res.data;
+
+        return AuthResponse.fromJson(body);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
+  static Future<AuthResponse?> verify_email(AuthParams params) async {
+    try {
+      var res = await DioProvider.post(
+        endPoint: DioEndpoints.otp,
+        data: params.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        var body = res.data;
+
+        return AuthResponse.fromJson(body);
+      } else {
+        return null;
+      }
+    } on Exception catch (e) {
+      log(e.toString());
+      return null;
+    }
+  }
 }

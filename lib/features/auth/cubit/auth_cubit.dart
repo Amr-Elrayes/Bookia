@@ -10,6 +10,12 @@ class AuthCubit extends Cubit<AuthState> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var confirmpasswordController = TextEditingController();
+  var otpController1 = TextEditingController();
+  var otpController2 = TextEditingController();
+  var otpController3 = TextEditingController();
+  var otpController4 = TextEditingController();
+  var otpController5 = TextEditingController();
+  var otpController6 = TextEditingController();
   AuthCubit() : super(AuthIntialState());
 
   register() async {
@@ -29,6 +35,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthErrorState());
     }
   }
+
   login() async {
     emit(AuthLoadingState());
     var res = await AuthRepo.login(
@@ -36,6 +43,32 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailController.text,
         password: passwordController.text,
       ),
+    );
+
+    if (res != null) {
+      emit(AuthSucessState());
+    } else {
+      emit(AuthErrorState());
+    }
+  }
+
+  forget_password() async {
+    emit(AuthLoadingState());
+    var res = await AuthRepo.forget_password(
+      AuthParams(email: emailController.text),
+    );
+
+    if (res != null) {
+      emit(AuthSucessState());
+    } else {
+      emit(AuthErrorState());
+    }
+  }
+
+  verify_email() async {
+    emit(AuthLoadingState());
+    var res = await AuthRepo.verify_email(
+      AuthParams(email: emailController.text),
     );
 
     if (res != null) {
