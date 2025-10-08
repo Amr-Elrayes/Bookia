@@ -19,9 +19,7 @@ class User {
     this.image,
   });
 
-  factory User.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'] as int?,
       name: json['name'] as String?,
@@ -34,8 +32,7 @@ class User {
     );
   }
 
-  Map<String, dynamic>
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,

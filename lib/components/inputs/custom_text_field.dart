@@ -13,7 +13,7 @@ class customTextformfield extends StatelessWidget {
     this.ontap,
     this.readonly = false,
     this.textAlign = TextAlign.start,
-    this.keyboardType = TextInputType.text
+    this.keyboardType = TextInputType.text,
   });
   final String? hintText;
   final String? Function(String?)? validator;

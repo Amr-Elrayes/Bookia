@@ -4,10 +4,10 @@ import 'package:bookia/features/auth/presentation/login/pages/login_screen.dart'
 import 'package:bookia/features/auth/presentation/otp/pages/otp_screen.dart';
 import 'package:bookia/features/auth/presentation/register/pages/register_screen.dart';
 import 'package:bookia/features/datails/details_screen.dart';
+import 'package:bookia/features/home/data/models/best_seller_response/product.dart';
 import 'package:bookia/features/main/main_app_screen.dart';
 import 'package:bookia/features/splash/splash_screen.dart';
 import 'package:bookia/features/welcome/welcome_screen.dart';
-import 'package:bookia/models/book_card_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,10 +27,8 @@ class Routes {
       GoRoute(path: welcome, builder: (context, state) => WelcomeScreen()),
       GoRoute(
         path: otp,
-        builder: (context, state) => BlocProvider(
-          create: (context) => AuthCubit(),
-          child: OtpScreen(),
-        ),
+        builder: (context, state) =>
+            BlocProvider(create: (context) => AuthCubit(), child: OtpScreen()),
       ),
       GoRoute(
         path: forget_password,
@@ -58,7 +56,7 @@ class Routes {
         path: details,
         name: "details",
         builder: (context, state) {
-          final book = state.extra as BookCardModel;
+          final book = state.extra as Product;
           ;
           return DetailsScreen(book: book);
         },

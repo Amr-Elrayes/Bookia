@@ -4,7 +4,12 @@ import 'package:dio/dio.dart';
 class DioProvider {
   static late Dio dio;
   static init() {
-    dio = Dio(BaseOptions(baseUrl: DioEndpoints.baseUrl , connectTimeout: Duration(seconds: 2)));
+    dio = Dio(
+      BaseOptions(
+        baseUrl: DioEndpoints.baseUrl,
+        connectTimeout: Duration(seconds: 2),
+      ),
+    );
   }
 
   static Future<Response> post({

@@ -4,6 +4,7 @@ import 'package:bookia/features/auth/data/models/auth_params.dart';
 import 'package:bookia/features/auth/data/models/auth_response/auth_response.dart';
 import 'package:bookia/services/dio/dio_endpoints.dart';
 import 'package:bookia/services/dio/dio_provider.dart';
+import 'package:bookia/services/local/shared_pref.dart';
 
 class AuthRepo {
   static Future<AuthResponse?> register(AuthParams params) async {
@@ -15,8 +16,9 @@ class AuthRepo {
 
       if (res.statusCode == 201) {
         var body = res.data;
-
-        return AuthResponse.fromJson(body);
+        var userObj = AuthResponse.fromJson(body);
+        SharedPref.saveUserData(userObj.data);
+        return userObj;
       } else {
         return null;
       }
@@ -45,6 +47,7 @@ class AuthRepo {
       return null;
     }
   }
+
   static Future<AuthResponse?> forget_password(AuthParams params) async {
     try {
       var res = await DioProvider.post(
@@ -64,6 +67,7 @@ class AuthRepo {
       return null;
     }
   }
+
   static Future<AuthResponse?> verify_email(AuthParams params) async {
     try {
       var res = await DioProvider.post(
