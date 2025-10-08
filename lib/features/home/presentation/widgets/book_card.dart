@@ -28,19 +28,22 @@ class book_card extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: CachedNetworkImage(
-                  imageUrl: book.image ?? "",
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorWidget: (context, error, stackTrace) {
-                    return Image.asset(
-                      AppImages.welcome,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    );
-                  },
+              child: Hero(
+                tag: book.id ?? "",
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: CachedNetworkImage(
+                    imageUrl: book.image ?? "",
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, error, stackTrace) {
+                      return Image.asset(
+                        AppImages.welcome,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

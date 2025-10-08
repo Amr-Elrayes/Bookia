@@ -39,19 +39,22 @@ class DetailsScreen extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: CachedNetworkImage(
-                    imageUrl: book.image ?? "",
-                    height: 280,
-                    fit: BoxFit.cover,
-                    errorWidget: (context, error, stackTrace) {
-                      return Image.asset(
-                        AppImages.welcome,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      );
-                    },
+                Hero(
+                  tag: book.id ?? "",
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: CachedNetworkImage(
+                      imageUrl: book.image ?? "",
+                      height: 280,
+                      fit: BoxFit.cover,
+                      errorWidget: (context, error, stackTrace) {
+                        return Image.asset(
+                          AppImages.welcome,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    ),
                   ),
                 ),
                 Gap(20),
