@@ -16,7 +16,7 @@ class book_card extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        pushTo(context, Routes.details , extra: book);
+        pushTo(context, Routes.details, extra: book);
       },
       child: Container(
         padding: EdgeInsets.all(12),

@@ -3,7 +3,7 @@ import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/features/cart/cart_screen.dart';
 import 'package:bookia/features/home/presentation/home_screen.dart';
 import 'package:bookia/features/profile/profile_screen.dart';
-import 'package:bookia/features/wishlist/wishlist_screen.dart';
+import 'package:bookia/features/wishlist/presentation/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

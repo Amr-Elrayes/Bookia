@@ -1,12 +1,16 @@
 import 'package:bookia/components/buttons/custom_buttom.dart';
 import 'package:bookia/core/constants/app_icons.dart';
 import 'package:bookia/core/constants/app_images.dart';
+import 'package:bookia/core/functions/snackbar.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/home/data/models/best_seller_response/product.dart';
+import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
+import 'package:bookia/features/home/presentation/cubit/home_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
@@ -28,49 +32,77 @@ class DetailsScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
-            child: SvgPicture.asset(AppIcons.wishlistSvg),
+            child: GestureDetector(
+              onTap: () {
+                context.read<HomeCubit>().addToWishlist(
+                  productId: book.id ?? 0,
+                );
+              },
+              child: SvgPicture.asset(AppIcons.wishlistSvg),
+            ),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(22),
-        child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Center(
-            child: Column(
-              children: [
-                Hero(
-                  tag: book.id ?? "",
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      imageUrl: book.image ?? "",
-                      height: 280,
-                      fit: BoxFit.cover,
-                      errorWidget: (context, error, stackTrace) {
-                        return Image.asset(
-                          AppImages.welcome,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        );
-                      },
+      body: BlocListener<HomeCubit, HomeState>(
+        listener: (context, state) {
+          if (state is HomeLoadingState) {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return Center(child: CircularProgressIndicator());
+              },
+            );
+          } else if (state is HomeSucessState) {
+            pop(context);
+            showSnakBar(
+              context,
+              Colors.green,
+              "Added To Wishlist Successfully",
+            );
+          } else {
+            showSnakBar(context, Colors.red, "Something Went Wrong");
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(22),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Center(
+              child: Column(
+                children: [
+                  Hero(
+                    tag: book.id ?? "",
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: CachedNetworkImage(
+                        imageUrl: book.image ?? "",
+                        height: 280,
+                        fit: BoxFit.cover,
+                        errorWidget: (context, error, stackTrace) {
+                          return Image.asset(
+                            AppImages.welcome,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                          );
+                        },
+                      ),
                     ),
                   ),
-                ),
-                Gap(20),
-                Text(book.name ?? "", style: TextStyles.size24()),
-                Gap(10),
-                Text(
-                  book.category ?? "",
-                  style: TextStyles.size18(color: AppColors.primaryColor),
-                ),
-                Gap(20),
-                Text(
-                  book.description ?? "",
-                  style: TextStyles.size15(),
-                  textAlign: TextAlign.justify,
-                ),
-              ],
+                  Gap(20),
+                  Text(book.name ?? "", style: TextStyles.size24()),
+                  Gap(10),
+                  Text(
+                    book.category ?? "",
+                    style: TextStyles.size18(color: AppColors.primaryColor),
+                  ),
+                  Gap(20),
+                  Text(
+                    book.description ?? "",
+                    style: TextStyles.size15(),
+                    textAlign: TextAlign.justify,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

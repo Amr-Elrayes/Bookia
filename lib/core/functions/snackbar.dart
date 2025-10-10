@@ -2,6 +2,9 @@ import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
+
+
+
 showSnakBar(BuildContext context, Color bgColor, String text) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(

@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    HomeSlider(sliders: cubit.sliders!,),
+                    HomeSlider(sliders: cubit.sliders!),
                     Gap(30),
                     best_seller_builder(books: cubit.books!),
                   ],

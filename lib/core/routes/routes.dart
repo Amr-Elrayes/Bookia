@@ -5,6 +5,7 @@ import 'package:bookia/features/auth/presentation/otp/pages/otp_screen.dart';
 import 'package:bookia/features/auth/presentation/register/pages/register_screen.dart';
 import 'package:bookia/features/datails/details_screen.dart';
 import 'package:bookia/features/home/data/models/best_seller_response/product.dart';
+import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/main/main_app_screen.dart';
 import 'package:bookia/features/splash/splash_screen.dart';
 import 'package:bookia/features/welcome/welcome_screen.dart';
@@ -57,8 +58,10 @@ class Routes {
         name: "details",
         builder: (context, state) {
           final book = state.extra as Product;
-          ;
-          return DetailsScreen(book: book);
+          return BlocProvider(
+            create: (context) => HomeCubit(),
+            child: DetailsScreen(book: book),
+          );
         },
       ),
     ],

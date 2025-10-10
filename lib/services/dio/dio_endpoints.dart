@@ -5,6 +5,13 @@ class DioEndpoints {
   static const String register = "/register";
   static const String forget_password = "/forget-password";
   static const String otp = "/check-forget-password";
+
+  //Home
   static const String products_bestseller = "/products-bestseller";
   static const String sliders = "/sliders";
+
+  //Wishlist
+  static const String wishlist = "/wishlist";
+  static const String add_to_wishlist = "/add-to-wishlist";
+  static const String remove_from_wishlist = "/remove-from-wishlist";
 }
