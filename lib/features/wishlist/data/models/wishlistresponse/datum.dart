@@ -1,3 +1,5 @@
+import 'package:bookia/features/home/data/models/best_seller_response/product.dart';
+
 class Datum {
   int? id;
   String? name;
@@ -21,9 +23,7 @@ class Datum {
     this.bestSeller,
   });
 
-  factory Datum.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory Datum.fromJson(Map<String, dynamic> json) {
     return Datum(
       id: json['id'] as int?,
       name: json['name'] as String?,
@@ -37,8 +37,7 @@ class Datum {
     );
   }
 
-  Map<String, dynamic>
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
@@ -50,5 +49,20 @@ class Datum {
       'description': description,
       'best_seller': bestSeller,
     };
+  }
+
+  Product mapToProduct() {
+    return Product(
+      id: id,
+      name: name,
+      description: description,
+      category: category,
+      image: image,
+      price: price,
+      priceAfterDiscount: double.tryParse(price ?? "0"),
+      bestSeller: bestSeller,
+      discount: discount,
+      stock: stock,
+    );
   }
 }

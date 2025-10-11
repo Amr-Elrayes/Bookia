@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPref {
   static late SharedPreferences pref;
   static String userData = "userData";
+  static String Wishlist = "Wishlist";
   static init() async {
     pref = await SharedPreferences.getInstance();
   }
@@ -25,6 +26,23 @@ class SharedPref {
     return Data.fromJson(stringToJson);
   }
 
+  static saveWishlist(List<int> wishListIds) {
+    List<String> intToString = wishListIds.map((id) => id.toString()).toList();
+    saveData(Wishlist, intToString);
+  }
+
+static List<int>? getWishlist()
+{
+  List<String>? listofStrings = getData(Wishlist);
+
+  if(listofStrings == null) return null;
+  List<int>? listOfints = [];
+  for(var id in listofStrings)
+  {
+    listOfints.add(int.tryParse(id) ?? 0);
+  }
+  return listOfints;
+}
   static saveData(String key, dynamic value) {
     if (value is int) {
       pref.setInt(key, value);
