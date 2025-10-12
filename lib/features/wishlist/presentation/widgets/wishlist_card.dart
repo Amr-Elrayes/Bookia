@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class WishlistCard extends StatelessWidget {
-  const WishlistCard({super.key, required this.book, required this.onDelete, required this.onRefresh});
+  const WishlistCard({
+    super.key,
+    required this.book,
+    required this.onDelete,
+    required this.onRefresh,
+  });
   final Datum book;
   final Function() onDelete;
   final Function() onRefresh;
@@ -18,11 +23,11 @@ class WishlistCard extends StatelessWidget {
       tag: book.id ?? "",
       child: GestureDetector(
         onTap: () {
-          pushTo(context, Routes.details, extra: book.mapToProduct()).then(
-            (value) {
-              onRefresh();
-            },
-          );
+          pushTo(context, Routes.details, extra: book.mapToProduct()).then((
+            value,
+          ) {
+            onRefresh();
+          });
         },
         child: Dismissible(
           key: UniqueKey(),

@@ -14,4 +14,8 @@ class DioEndpoints {
   static const String wishlist = "/wishlist";
   static const String add_to_wishlist = "/add-to-wishlist";
   static const String remove_from_wishlist = "/remove-from-wishlist";
+
+  //Search
+  static const String allProducts = "/products";
+  static const String searchProducts = "/products-search";
 }

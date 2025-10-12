@@ -10,5 +10,6 @@ class AppColors {
   static const Color cardColor = Color(0xffF5EFE1);
   static const Color whiteColor = Color(0xffffffff);
   static const Color buybuttomColor = Color(0xff2F2F2F);
+  static const Color searchFieldColor = Color(0xffF2F3F2);
   static const Color redColor = Colors.red;
 }

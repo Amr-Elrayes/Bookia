@@ -7,6 +7,7 @@ import 'package:bookia/features/datails/details_screen.dart';
 import 'package:bookia/features/home/data/models/best_seller_response/product.dart';
 import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
 import 'package:bookia/features/main/main_app_screen.dart';
+import 'package:bookia/features/search/presentation/search_screen.dart';
 import 'package:bookia/features/splash/splash_screen.dart';
 import 'package:bookia/features/welcome/welcome_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,7 @@ class Routes {
   static String details = "/details";
   static String forget_password = "/forget_password";
   static String otp = "/otp";
+  static String search = "/search";
 
   static GoRouter routes = GoRouter(
     routes: [
@@ -63,6 +65,11 @@ class Routes {
             child: DetailsScreen(book: book),
           );
         },
+      ),
+      GoRoute(
+        path: search,
+        name: "search",
+        builder: (context, state) => SearchScreen(),
       ),
     ],
   );

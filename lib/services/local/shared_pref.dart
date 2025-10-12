@@ -31,18 +31,17 @@ class SharedPref {
     saveData(Wishlist, intToString);
   }
 
-static List<int>? getWishlist()
-{
-  List<String>? listofStrings = getData(Wishlist);
+  static List<int>? getWishlist() {
+    List<String>? listofStrings = getData(Wishlist);
 
-  if(listofStrings == null) return null;
-  List<int>? listOfints = [];
-  for(var id in listofStrings)
-  {
-    listOfints.add(int.tryParse(id) ?? 0);
+    if (listofStrings == null) return null;
+    List<int>? listOfints = [];
+    for (var id in listofStrings) {
+      listOfints.add(int.tryParse(id) ?? 0);
+    }
+    return listOfints;
   }
-  return listOfints;
-}
+
   static saveData(String key, dynamic value) {
     if (value is int) {
       pref.setInt(key, value);

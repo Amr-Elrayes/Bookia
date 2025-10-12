@@ -18,7 +18,6 @@ class WishListCubit extends Cubit<WishListState> {
     }
   }
 
-
   removeFromWishlist({required int productId}) async {
     emit(WishListLoadingState());
     var res = await WishlistRepo.removeFromtWishlist(productId: productId);

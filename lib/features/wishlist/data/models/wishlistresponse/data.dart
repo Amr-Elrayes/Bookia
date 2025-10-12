@@ -32,30 +32,18 @@ class Data {
     this.total,
   });
 
-  factory Data.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
       currentPage: json['current_page'] as int?,
       data: (json['data'] as List<dynamic>?)
-          ?.map(
-            (e) =>
-                Datum.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-          )
+          ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
           .toList(),
       firstPageUrl: json['first_page_url'] as String?,
       from: json['from'] as int?,
       lastPage: json['last_page'] as int?,
       lastPageUrl: json['last_page_url'] as String?,
       links: (json['links'] as List<dynamic>?)
-          ?.map(
-            (e) =>
-                Link.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-          )
+          ?.map((e) => Link.fromJson(e as Map<String, dynamic>))
           .toList(),
       nextPageUrl: json['next_page_url'] as dynamic,
       path: json['path'] as String?,
@@ -66,26 +54,15 @@ class Data {
     );
   }
 
-  Map<String, dynamic>
-  toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'current_page': currentPage,
-      'data': data
-          ?.map(
-            (e) => e
-                .toJson(),
-          )
-          .toList(),
+      'data': data?.map((e) => e.toJson()).toList(),
       'first_page_url': firstPageUrl,
       'from': from,
       'last_page': lastPage,
       'last_page_url': lastPageUrl,
-      'links': links
-          ?.map(
-            (e) => e
-                .toJson(),
-          )
-          .toList(),
+      'links': links?.map((e) => e.toJson()).toList(),
       'next_page_url': nextPageUrl,
       'path': path,
       'per_page': perPage,
