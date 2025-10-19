@@ -1,0 +1,33 @@
+{
+    "home" : "Home",
+    "best_seller" : "Best Seller",
+    "login" : "Login",
+    "register" : "Register",
+    "slogan" : "Order Your Book Now",
+    "login_header" : "Welcome back! Glad to see you, Again!",
+    "register_header" : "Hello! Register to get started",
+    "username" : "Username",
+    "email" : "Enter your email",
+    "no_email" : "Email",
+    "password" : "Enter your password",
+    "con_password" : "Confirm password",
+    "username_validate" : "Username is Required",
+    "email_validate" : "Email is Required",
+    "password_validate" : "Password is Required",
+    "con_password_validate" : "Confirm Password is Required",
+    "forget_password" : "Forget Password ?",
+    "or" : "OR",
+    "google" : "Sign in with Google",
+    "apple" : "Sign in with Apple",
+    "no_account" : "Don’t have an account?  ",
+    "have_account" : "Already have an account?  ",
+
+
+    "wishlist" : "Wishlist",
+    "no_wishlist_books" : "No Books Added To Wishlist",
+
+    "add_to_cart" : "Add To Cart",
+
+        "cart" : "Cart",
+    "no_cart_books" : "No Books Added To Cart"
+}

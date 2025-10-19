@@ -3,6 +3,8 @@ import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_state.dart';
 import 'package:bookia/features/cart/presentation/widgets/cart_card.dart';
+import 'package:bookia/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -16,7 +18,7 @@ class CartScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => CartCubit()..getCart(),
       child: Scaffold(
-        appBar: AppBar(title: Text("Cart")),
+        appBar: AppBar(title: Text(LocaleKeys.cart.tr())),
         body: BlocBuilder<CartCubit, CartState>(
           builder: (context, state) {
             var cubit = context.read<CartCubit>();
@@ -31,7 +33,10 @@ class CartScreen extends StatelessWidget {
                   children: [
                     Lottie.asset(AppImages.nobooks, width: 180, height: 180),
                     Gap(10),
-                    Text("No Books Added To Cart", style: TextStyles.size18()),
+                    Text(
+                      LocaleKeys.no_cart_books.tr(),
+                      style: TextStyles.size18(),
+                    ),
                   ],
                 ),
               );
