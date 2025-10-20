@@ -43,7 +43,6 @@ class SharedPref {
     return listOfints;
   }
 
-
   static saveCart(List<int> CartIds) {
     List<String> intToString = CartIds.map((id) => id.toString()).toList();
     saveData(Cart, intToString);

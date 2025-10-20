@@ -32,7 +32,10 @@ class WishlistScreen extends StatelessWidget {
                   children: [
                     Lottie.asset(AppImages.nobooks, width: 180, height: 180),
                     Gap(10),
-                    Text(LocaleKeys.no_wishlist_books.tr(), style: TextStyles.size18()),
+                    Text(
+                      LocaleKeys.no_wishlist_books.tr(),
+                      style: TextStyles.size18(),
+                    ),
                   ],
                 ),
               );

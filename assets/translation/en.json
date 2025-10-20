@@ -25,9 +25,27 @@
 
     "wishlist" : "Wishlist",
     "no_wishlist_books" : "No Books Added To Wishlist",
+    "added_to_wishlist" : "Added To Wishlist",
+    "removed_from_wishlist" : "Removed From Wishlist",
 
     "add_to_cart" : "Add To Cart",
 
         "cart" : "Cart",
-    "no_cart_books" : "No Books Added To Cart"
+    "no_cart_books" : "No Books Added To Cart",
+    "added_to_cart" : "Added To Cart",
+    "total" : "Total Price :",
+    "place_order" : "Place Order",
+    "place_order_header" : "Place Your Order",
+    "fullname" : "Full Name",
+    "address" : "Address",
+    "phone" : "Phone",
+    "government" : "Government",
+    "gov_validate" : "Government is Required",
+    "phone_validate" : "Phone is Required",
+    "add_validate" : "Address is Required",
+    "success" : "SUCCESS!",
+    "success_mes" : "Your order will be delivered soon.\nThank you for choosing our app!",
+    "back_to_home" : "Back To Home",
+
+    "search" : "Search Store"
 }

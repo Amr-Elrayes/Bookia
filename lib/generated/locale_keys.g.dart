@@ -32,6 +32,8 @@ abstract class LocaleKeys {
   //Wishlist
   static const wishlist = "wishlist";
   static const no_wishlist_books = "no_wishlist_books";
+  static const added_to_wishlist = "added_to_wishlist";
+  static const removed_from_wishlist = "removed_from_wishlist";
 
   //Details
   static const add_to_cart = "add_to_cart";
@@ -39,4 +41,21 @@ abstract class LocaleKeys {
   //Cart
   static const cart = "cart";
   static const no_cart_books = "no_cart_books";
+  static const added_to_cart = "added_to_cart";
+  static const total = "total";
+  static const place_order = "place_order";
+  static const place_order_header = "place_order_header";
+  static const fullname = "fullname";
+  static const address = "address";
+  static const phone = "phone";
+  static const government = "government";
+  static const add_validate = "add_validate";
+  static const phone_validate = "phone_validate";
+  static const gov_validate = "gov_validate";
+  static const success = "success";
+  static const success_mes = "success_mes";
+  static const back_to_home = "back_to_home";
+
+  //Search
+  static const search = "search";
 }

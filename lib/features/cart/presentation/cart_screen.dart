@@ -1,4 +1,8 @@
+import 'package:bookia/components/buttons/custom_buttom.dart';
 import 'package:bookia/core/constants/app_images.dart';
+import 'package:bookia/core/routes/navigation.dart';
+import 'package:bookia/core/routes/routes.dart';
+import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:bookia/features/cart/presentation/cubit/cart_state.dart';
@@ -41,29 +45,74 @@ class CartScreen extends StatelessWidget {
                 ),
               );
             }
-            return ListView.separated(
-              padding: EdgeInsets.all(7),
-              itemBuilder: (context, index) {
-                return CartCard(
-                  book: books[index],
-                  onDelete: () {
-                    cubit.removeFromCart(cartItemId: books[index].itemId ?? 0);
-                  },
-                  onUpdate: (p0) {
-                    cubit.updateCart(
-                      cartItemId: books[index].itemId ?? 0,
-                      quantity: p0,
-                    );
-                  },
-                  onRefresh: () {
-                    cubit.getCart();
-                  },
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Divider();
-              },
-              itemCount: books.length,
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView.separated(
+                    padding: EdgeInsets.all(7),
+                    itemBuilder: (context, index) {
+                      return CartCard(
+                        book: books[index],
+                        onDelete: () {
+                          cubit.removeFromCart(
+                            cartItemId: books[index].itemId ?? 0,
+                          );
+                        },
+                        onUpdate: (p0) {
+                          cubit.updateCart(
+                            cartItemId: books[index].itemId ?? 0,
+                            quantity: p0,
+                          );
+                        },
+                        onRefresh: () {
+                          cubit.getCart();
+                        },
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return Divider();
+                    },
+                    itemCount: books.length,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 20,
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            LocaleKeys.total.tr(),
+                            style: TextStyles.size18(
+                              color: AppColors.graytextColor,
+                            ),
+                          ),
+                          Text(
+                            "\$ ${cubit.cartResponse?.data?.total ?? 0}",
+                            style: TextStyles.size18(),
+                          ),
+                        ],
+                      ),
+                      Gap(15),
+                      customButtom(
+                        txt: LocaleKeys.place_order.tr(),
+                        onPressed: () {
+                          pushTo(
+                            context,
+                            Routes.place_order,
+                            extra:
+                                cubit.cartResponse?.data?.total.toString() ?? 0,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             );
           },
         ),
