@@ -19,8 +19,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 // ignore: must_be_immutable
-class ForgetPasswordScreen extends StatelessWidget {
-  ForgetPasswordScreen({super.key});
+class CreateNewPasswordScreen extends StatelessWidget {
+  CreateNewPasswordScreen({super.key, required this.Otp});
+  final int Otp;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +35,11 @@ class ForgetPasswordScreen extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: _buildforgetpasswordbody(context),
+      body: _buildcreatenewpasswordbody(context),
     );
   }
 
-  Widget _buildforgetpasswordbody(BuildContext context) {
+  Widget _buildcreatenewpasswordbody(BuildContext context) {
     var cubit = context.read<AuthCubit>();
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
@@ -46,7 +47,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           showloadingDialog(context);
         } else if (state is AuthSucessState) {
           log("Success");
-          pushTo(context, Routes.otp);
+          pushTo(context, Routes.NewPasswordSuccess);
         } else {
           pop(context);
           showSnakBar(context, AppColors.redColor, "Field");
@@ -59,29 +60,40 @@ class ForgetPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(LocaleKeys.fogot_password.tr(), style: TextStyles.size30()),
+              Text(LocaleKeys.creat_new_password.tr(), style: TextStyles.size30()),
               Gap(10),
               Text(
-                LocaleKeys.fogot_password_msg.tr(),
+                LocaleKeys.creat_new_password_msg.tr(),
                 style: TextStyles.size15(color: AppColors.graytextColor),
               ),
               Gap(30),
               customTextformfield(
-                controller: cubit.emailController,
-                hintText: LocaleKeys.email.tr(),
+                controller: cubit.passwordController,
+                hintText: LocaleKeys.new_password.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return LocaleKeys.email_validate.tr();
+                    return LocaleKeys.new_password_validate.tr();
+                  }
+                  return null;
+                },
+              ),
+              Gap(20),
+              customTextformfield(
+                controller: cubit.confirmpasswordController,
+                hintText: LocaleKeys.confirm_new_password.tr(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return LocaleKeys.confirm_new_password_validate.tr();
                   }
                   return null;
                 },
               ),
               Gap(40),
               customButtom(
-                txt: LocaleKeys.send_code.tr(),
+                txt: LocaleKeys.reset_password.tr(),
                 onPressed: () {
                   if (cubit.formkey.currentState!.validate()) {
-                    cubit.forget_password();
+                    cubit.resetpassword(Otp);
                   }
                 },
               ),
